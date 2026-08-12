@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import SearchBar from './components/SearchBar.jsx'
-import ProjectList from './components/ProjectList.jsx'
-import ProjectForm from './components/ProjectForm.jsx'
+import React, { useState } from 'react'
+import SearchBar from './searchbar.jsx'
+import ProjectList from './projectlist.jsx'
+import ProjectForm from './projectform.jsx'
 import initialProjects from './data/projects.js'
 
 function App() {
