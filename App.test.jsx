@@ -1,22 +1,22 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import App from './App.jsx'
+import App from './app.jsx'
 
 describe('App', () => {
   it('renders the starter projects', () => {
     render(<App />)
-    expect(screen.getByText('Marigold Rebrand')).toBeInTheDocument()
-    expect(screen.getByText('Northbound Festival')).toBeInTheDocument()
+    expect(screen.getByText('Solstice Packaging')).toBeInTheDocument()
+    expect(screen.getByText('Atlas Website')).toBeInTheDocument()
   })
 
   it('filters projects when searching', () => {
     render(<App />)
     const input = screen.getByLabelText('Search projects')
 
-    fireEvent.change(input, { target: { value: 'marigold' } })
+    fireEvent.change(input, { target: { value: 'solstice' } })
 
-    expect(screen.getByText('Marigold Rebrand')).toBeInTheDocument()
-    expect(screen.queryByText('Northbound Festival')).not.toBeInTheDocument()
+    expect(screen.getByText('Solstice Packaging')).toBeInTheDocument()
+    expect(screen.queryByText('Atlas Website')).not.toBeInTheDocument()
   })
 
   it('shows an empty state when nothing matches', () => {
@@ -31,7 +31,7 @@ describe('App', () => {
   it('adds a new project through the form', () => {
     render(<App />)
 
-    fireEvent.click(screen.getByRole('button', { name: '+ New project' }))
+    fireEvent.click(screen.getByRole('button', { name: /New project/ }))
     fireEvent.change(screen.getByPlaceholderText('e.g. Solstice Packaging'), {
       target: { value: 'Test Project' },
     })
@@ -46,9 +46,9 @@ describe('App', () => {
   it('removes a project when Remove is clicked', () => {
     render(<App />)
 
-    const removeButtons = screen.getAllByText('Remove')
+    const removeButtons = screen.getAllByRole('button', { name: /Remove/ })
     fireEvent.click(removeButtons[0])
 
-    expect(screen.queryByText('Marigold Rebrand')).not.toBeInTheDocument()
+    expect(screen.queryByText('Solstice Packaging')).not.toBeInTheDocument()
   })
 })
