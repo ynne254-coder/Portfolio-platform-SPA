@@ -15,6 +15,14 @@ npm run dev
 
 Open the local URL printed by Vite, usually `http://localhost:5173`.
 
+## Run the test suite
+
+```bash
+npm test
+```
+
+The tests use Vitest and React Testing Library to cover rendering, search, empty states, adding projects, and removing projects.
+
 ## Production build
 
 ```bash
